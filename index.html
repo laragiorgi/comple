@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gazzetta del Compleanno - Edizione Speciale Paolo Giorgi</title>
+    <!-- Font Vintage -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Chivo+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-color: #f6efe3; /* Carta ingiallita più calda */
+            --ink-color: #2e2a27;
+            --accent-red: #9e2a2a;
+            --sepia-filter: sepia(0.6) contrast(0.8) brightness(1.1); /* Filtro foto d'epoca */
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: var(--paper-color);
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCA0IDQiPjxnIGZpbGwtcmVsZT0iZXZlbm9kZCI+PGcgZmlsbD0iIzU1NCIgZmlsbC1vcGFjaXR5PSIwLjA1Ij48cGF0aCBkPSJNMCAwaDF2MUgwVjB6TTEgMWgxdjFIMVYxei0yIDBoMXYxSDBWMnpNMyAzaDF2MUgzVjN6TTIgMmgxdjFIMlYyeiIvPjwvZz48L2c+PC9zdmc+');
+            color: var(--ink-color);
+            margin: 0;
+            padding: 30px 15px;
+            line-height: 1.5;
+        }
+
+        .newspaper-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 1px solid var(--ink-color);
+            padding: 25px;
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.15);
+            background: #fffdf9;
+        }
+
+        /* Testata principale del giornale */
+        header {
+            text-align: center;
+            border-bottom: 5px solid var(--ink-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+        }
+
+        header .date-info {
+            font-family: 'Chivo Mono', monospace;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--ink-color);
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 4.5rem;
+            margin: 15px 0 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: var(--ink-color);
+        }
+
+        header .motto {
+            font-style: italic;
+            font-size: 1.3rem;
+            border-top: 2px solid var(--ink-color);
+            padding: 8px 0;
+            color: var(--accent-red);
+        }
+
+        /* Layout multi-colonna complesso */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr; /* Colonna principale più larga */
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+
+        /* Stile articoli e titoli */
+        article { margin-bottom: 30px; }
+
+        .headline {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--ink-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            font-family: 'Chivo Mono', monospace;
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            display: block;
+            border-bottom: 1px dashed var(--ink-color);
+            padding-bottom: 5px;
+        }
+
+        .dropcap {
+            float: left;
+            font-size: 5rem;
+            line-height: 0.8;
+            padding-right: 15px;
+            padding-top: 5px;
+            color: var(--accent-red);
+        }
+
+        /* Gestione Foto */
+        .article-image {
+            width: 100%;
+            height: auto;
+            border: 2px solid var(--ink-color);
+            margin-bottom: 15px;
+            filter: var(--sepia-filter);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            padding-top: 60%; /* Ratio 16:9 */
+            background-color: #d1b899;
+            border: 2px dashed var(--ink-color);
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .image-placeholder span {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Chivo Mono', monospace;
+            font-size: 0.9rem; color: #555;
+            text-align: center;
+        }
+
+        .caption {
+            font-style: italic;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Colonna laterale (Scheda e Timeline) */
+        .side-column {
+            border-left: 1px solid var(--ink-color);
+            padding-left: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .side-column { border-left: none; padding-left: 0; border-top: 1px solid var(--ink-color); padding-top: 30px; }
+        }
+
+        .info-box {
+            background-color: #fbf8f2;
+            border: 1px solid var(--ink-color);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-box h3 { margin-top: 0; color: var(--accent-red); text-transform: uppercase; border-bottom: 1px solid var(--ink-color); padding-bottom: 10px; }
+
+        .spec-list { list-style-type: square; font-family: 'Chivo Mono', monospace; font-size: 0.95rem; padding-left: 20px; }
+        .spec-list li { margin-bottom: 12px; }
+
+        .timeline { list-style: none; padding: 0; }
+        .timeline-event { border-bottom: 1px dashed #bbb; padding-bottom: 15px; margin-bottom: 15px; }
+        .timeline-year { font-weight: bold; color: var(--accent-red); font-size: 1.2rem; }
+
+        /* Altri contenuti grafici (Meteo, Annunci) */
+        .weather-box {
+            text-align: center; font-family: 'Chivo Mono', monospace; font-size: 0.9rem;
+            border: 1px solid var(--ink-color); padding: 10px; margin-bottom: 20px;
+        }
+
+        .classifieds {
+            border-top: 2px dashed var(--ink-color); margin-top: 30px; padding-top: 25px;
+        }
+
+        /* Sezione Quiz e Diploma */
+        .quiz-section { background-color: #fbf8f2; padding: 25px; border-radius: 5px; border: 1px solid var(--ink-color); margin-top: 30px;}
+        .quiz-question { margin-bottom: 20px; border-bottom: 1px dashed #ccc; padding-bottom: 15px; }
+        .quiz-question p { font-weight: bold; font-size: 1.1rem;}
+        .quiz-option { display: block; margin: 8px 0; font-size: 1rem; cursor: pointer;}
+        
+        button.btn-quiz {
+            font-family: 'Chivo Mono', monospace; background-color: var(--accent-red); color: white;
+            border: none; padding: 12px 20px; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; width: 100%; font-size: 1.1rem;
+        }
+        button.btn-quiz:hover { background-color: #8a2424; }
+
+        #certificate { display: none; border: 5px double var(--ink-color); padding: 30px; margin-top: 30px; text-align: center; background-color: #fffaf0;}
+        #certificate h2 { color: var(--accent-red); font-size: 2.5rem; margin-bottom: 15px; text-transform: uppercase;}
+
+    </style>
+</head>
+<body>
+
+    <div class="newspaper-container">
+        
+        <header>
+            <div class="date-info">
+                <span>VOL. LXIII N. 1</span>
+                <span>ITALIA, 16 AGOSTO 1963 / 16 AGOSTO 2026</span>
+                <span>PREZZO: 100 LIRE / GRATIS</span>
+            </div>
+            <h1>IL GIORNALE DEI GIORGI</h1>
+            <div class="motto">"Tutte le notizie che vale la pena stampare, festeggiare e tramandare"</div>
+        </header>
+
+        <div class="main-content">
+            
+            <!-- COLONNA PRINCIPALE -->
+            <div class="left-column">
+                <article>
+                    <h2 class="headline" style="color: var(--accent-red);">63esimo Compleanno di Paolo Giorgi</h2>
+                    <span class="subhead">UN TRAGUARDO STORICO PER L'INGEGNERIA FAMIGLIARE</span>
+                    
+                    <!-- FOTO PRINCIPALE: Carica 'foto_papa_principale.jpg' su GitHub -->
+                    <img src="foto_papa_principale.jpg" alt="[Manca Foto Principale: Carica foto_papa_principale.jpg]" class="article-image" onerror="this.style.display='none'; document.getElementById('placeholder1').style.display='block';">
+                    <div id="placeholder1" class="image-placeholder" style="display:none;">
+                        <span>[Manca Foto Principale: Carica 'foto_papa_principale.jpg' su GitHub]</span>
+                    </div>
+                    
+                    <p class="caption">Un'immagine recente del 'Modello Paolo Giorgi 1963' in piena fase operativa.</p>
+
+                    <p><span class="dropcap">N</span>el lontano 1963, un'annata eccezionale per il design e la robustezza, veniva lanciato sul mercato un prototipo unico nel suo genere (meno male). Oggi, dopo 63 anni di onorato servizio, test su strada e innumerevoli gelati, questo modello leggendario festeggia il suo anniversario.</p>
+                    <p>I nostri inviati confermano che, nonostante qualche chilometro in più sul contachilometri della vita, il motore gira ancora come un orologio (specialmente dopo un piatto di pasta). Le sue prestazioni sulle battute discutibili e i commenti incommentabili rimangono imbattute a livello nazionale.</p>
+                    <p>In una rara intervista rilasciata recentemente, Paolo Giorgi ha dichiarato: "Sto solo riposando gli occhi". Un'icona di resilienza familgliare.</p>
+                </article>
+
+                <article class="classifieds">
+                    <h3 class="headline" style="font-size: 1.8rem; text-align: center;">Annunci e Curiosità del Giorno</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-family: 'Chivo Mono', monospace; font-size: 0.9rem;">
+                        <div style="border: 1px solid #ccc; padding: 10px;">
+                            <strong>VENDESI TELECOMANDO:</strong> Saldato alla mano, quasi nuovo. Chiedere di Paolo.
+                        </div>
+                        <div style="border: 1px solid #ccc; padding: 10px;">
+                            <strong>CERCASI PAZIENZA:</strong> Ricompensa per chi la trova. Rivolgersi a chi vive con lui.
+                        </div>
+                        <div style="border: 1px solid #ccc; padding: 10px;">
+                            <strong>LEZIONE DI VITA:</strong> Impara a far finta di non sentire per non dover parlare.
+                        </div>
+                        <div style="border: 1px solid #ccc; padding: 10px;">
+                            <strong>OFFERTA PASTA:</strong> Quantità industriali pronte.
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- COLONNA LATERALE -->
+            <div class="side-column">
+                <div class="weather-box">
+                    <p><strong>METEO DEL GIORNO</strong></p>
+                    <p>Sole con alte probabilità di sonnellini improvvisi.</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>⚙️ Scheda Tecnica</h3>
+                    <ul class="spec-list">
+                        <li><strong>PRODOTTO:</strong> Papà / Marito / Mito (Modello Paolo Giorgi)</li>
+                        <li><strong>ANNO:</strong> 1963 (Vintage Originale)</li>
+                        <li><strong>ALIMENTAZIONE:</strong> Liquori, carboidrati, notizie e tanta pazienza.</li>
+                        <li><strong>SUPERPOTERE:</strong> I muri tremano con un suo starnuto.</li>
+                        <li><strong>DIFETTO NOTO:</strong> Pensa di non avere *mai* torto.</li>
+                        <li><strong>GARANZIA:</strong> 63 anni e non sentirli!</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>📜 Linea del Tempo: I Successi</h3>
+                    <ul class="timeline">
+                        <li class="timeline-event">
+                            <span class="timeline-year">1963:</span> Lancio sul mercato. Design rivoluzionario, robuste fondamenta.
+                        </div>
+                        <li class="timeline-event">
+                            <span class="timeline-year">Anni '80:</span> Test di resistenza estremi. Periodo della leggenda della pallacanestro e degli anni cosiddetti "sciupafemmine".
+                            
+                            <!-- FOTO GIOVANE: Carica 'foto_giovane.jpg' su GitHub -->
+                            <img src="foto_giovane.jpg" alt="[Manca Foto Giovane]" class="article-image" onerror="this.style.display='none'; document.getElementById('placeholder2').style.display='block';">
+                            <div id="placeholder2" class="image-placeholder" style="display:none; padding-top:40%;">
+                                <span>[Manca Foto Giovane: Carica 'foto_giovane.jpg']</span>
+                            </div>
+                        </li>
+                        <li class="timeline-event">
+                            <span class="timeline-year">Oggi:</span> 63 anni dopo e la pelle è ancora ben tirata. Certificazione "Patrimonio di Famiglia".
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div> <!-- Fine main-content -->
+
+        <article>
+            <h3 class="headline" style="text-align: center; border-top: 1px solid var(--ink-color); padding-top: 20px;">Dossier Speciale: Paolo e la sua Famiglia</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                
+                <!-- FOTO FAMIGLIA: Carica 'foto_famiglia.jpg' su GitHub -->
+                <img src="foto_famiglia.jpg" alt="[Manca Foto Famiglia]" class="article-image" onerror="this.style.display='none'; document.getElementById('placeholder3').style.display='block';">
+                <div id="placeholder3" class="image-placeholder" style="display:none; padding-top:50%;">
+                    <span>[Manca Foto Famiglia: Carica 'foto_famiglia.jpg']</span>
+                </div>
+        <!-- SEZIONE QUIZ -->
+        <div class="quiz-section">
+            <h2 class="headline" style="text-align: center;">🎯 Il Quiz per il Vero Esperto</h2>
+            <p style="text-align: center; font-style: italic; margin-bottom: 25px;">Pensi di conoscere Paolo Giorgi?</p>
+
+            <div class="quiz-question">
+                <p>1. Paolo ammette mai di avere torto?</p>
+                <label class="quiz-option"><input type="radio" name="q1" value="A"> No</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="B"> Non ho mai torto, sono gli altri che non capiscono mai</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Qual è la sua frase tipica?</p>
+                <label class="quiz-option"><input type="radio" name="q2" value="A"> Ora prendo...(traduzione, ora gli altri mi dovranno prendere ciò che voglio) </label>
+                <label class="quiz-option"><input type="radio" name="q2" value="B"> Ma sei deficiente?</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. genere di film che di sicuro ha visto  </p>
+                <label class="quiz-option"><input type="radio" name="q3" value="A"> qualunque film anni 60-50 </label>
+                <label class="quiz-option"><input type="radio" name="q3" value="B"> qualcunque film in cui qualcuno finisce senza testa (commento mamma: da buzzurro)</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>4. giornata ideale </p>
+                <label class="quiz-option"><input type="radio" name="q4" value="A"> da solo***</label>
+                <label class="quiz-option"><input type="radio" name="q4" value="B"> senza nessuno </label>
+            </div>
+            <button class="btn-quiz" onclick="checkQuiz()">Verifica Risposte e Ricevi il Diploma</button>
+
+            <!-- DIPLOMA -->
+            <div id="certificate">
+                <h2>🏆 DIPLOMA DI ESPERTO UFFICIALE</h2>
+                <p style="font-size: 1.4rem;">Si attesta che la famiglia e gli amici conoscono perfettamente l'unicità e la genialità di **Paolo Giorgi**.</p>
+                <p style="font-size: 1.8rem; font-weight: bold; margin-top: 20px; color: var(--accent-red);">Tanti Auguri di Buon Compleanno per i tuoi 63 Anni! ❤️</p>
+                <p style="font-size: 0.9rem; margin-top: 15px; font-style: italic;">Conferito con amore dalla tua famiglia</p>
+            </div>
+        </div>
+
+    </div> <!-- Fine container -->
+
+    <script>
+        function checkQuiz() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+
+            if (!q1 || !q2) {
+                alert("Rispondi a tutte le domande prima di sbloccare il diploma!");
+                return;
+            }
+
+            document.getElementById('certificate').style.display = 'block';
+            document.getElementById('certificate').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
